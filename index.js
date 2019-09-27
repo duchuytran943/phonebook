@@ -18,44 +18,60 @@ function loadData() {
 }
 
 function showAllContacts() {
-    console.log('+++++++++++++++++++++++++++++++++++++++++');
+    console.log('+++++++++++++++ CONTACT LISTS +++++++++++++++');
     for (var contact of contacts) {
         console.log('id: ' + contact.id + ' || ' + 'name: ' + contact.name + ' || ' + 'phone: ' + contact.phone);
     }
     console.log('+++++++++++++++++++++++++++++++++++++++++');
 }
 
+function createNewContact() {
+    console.log('ADD NEW CONTACT: ');
+    // console.log('Enter new phone: ');
+    var phone = readlineSync.question('> Enter new phone: ');
+    // console.log('Enter name: ');
+    var name = readlineSync.question('> Enter name: ');
+    /**
+     * Next, we push new object contact to contacts arr.
+     * id of new contacts = (value of id of ending contact) + 1;
+     *  ending contact => contacts[contacts.length -1];
+     *  value of id of ending contact => contacts[contacts.length -1].id;
+     * id of new contacts => (contacts[contacts.length -1].id) + 1;
+     */
+    contacts.push({ id: contacts[contacts.length - 1].id + 1, name: name, phone: phone });
+}
+
 
 function showMenu() {
-    console.log('0. Show all contact');
-    console.log('1. Create new contact');
-    console.log('2. Edit contact');
-    console.log('3. Search contact');
-    console.log('4. Erase contact ');
-    console.log('5. Save and Exit');
+    console.log('1. Show all contact');
+    console.log('2. Create new contact');
+    console.log('3. Edit contact');
+    console.log('4. Search contact');
+    console.log('5. Erase contact ');
+    console.log('0. Save and Exit');
     var option = readlineSync.question('> ');
     switch (option) {
-        case "0":
+        case "1":
             showAllContacts();
             showMenu();
             break;
-        case "1":
+        case "2":
             createNewContact();
             showMenu();
             break;
-        case "2":
+        case "3":
             editContact();
             showMenu();
             break;
-        case "3":
+        case "4":
             searchContact();
             showMenu();
             break;
-        case "4":
+        case "5":
             eraseContact();
             showMenu();
             break;
-        case "5":
+        case "0":
             saveAndExit();
             break;
 
