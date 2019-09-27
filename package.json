@@ -1,0 +1,22 @@
+{
+  "name": "phonebook",
+  "version": "1.0.0",
+  "description": "phonebook. exercise of javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duchuytran943/phonebook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duchuytran943/phonebook/issues"
+  },
+  "homepage": "https://github.com/duchuytran943/phonebook#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
