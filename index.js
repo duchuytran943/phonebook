@@ -25,24 +25,43 @@ function showAllContacts() {
     console.log('+++++++++++++++++++++++++++++++++++++++++');
 }
 
+
 function createNewContact() {
     console.log('ADD NEW CONTACT: ');
     // console.log('Enter new phone: ');
-    var phone = readlineSync.question('> Enter new phone: ');
+    var phone = readlineSync.question('> Enter new phone number: ');
     // console.log('Enter name: ');
     var name = readlineSync.question('> Enter name: ');
     /**
+     * 
      * Next, we push new object contact to contacts arr.
      * id of new contacts = (value of id of ending contact) + 1;
      *  ending contact => contacts[contacts.length -1];
      *  value of id of ending contact => contacts[contacts.length -1].id;
      * id of new contacts => (contacts[contacts.length -1].id) + 1;
      */
+
     contacts.push({ id: contacts[contacts.length - 1].id + 1, name: name, phone: phone });
 }
 
+function editContact() {
+    /**
+     * Selected id need edit.
+     */
+    var idSelected = Number(readlineSync.question('> Selected ID contact need edit:  '));
+    // console.log(typeof(idSelected));
+    var oldContact = contacts[idSelected];
+    // console.log(oldContact);
+    var phone = readlineSync.question('> Edit phone number: ' + oldContact.phone + '  =>  ');
+    var name = readlineSync.question('> Edit name: ' + oldContact.name + '  =>  ');
+    // console.log(name, phone);
+    oldContact.phone = phone;
+    oldContact.name = name;
+    // console.log(oldContact);
+}
 
 function showMenu() {
+    console.log('==================================================');
     console.log('1. Show all contact');
     console.log('2. Create new contact');
     console.log('3. Edit contact');
@@ -60,6 +79,7 @@ function showMenu() {
             showMenu();
             break;
         case "3":
+            showAllContacts();
             editContact();
             showMenu();
             break;
@@ -82,11 +102,10 @@ function showMenu() {
     }
 
 }
+
 function main() {
     loadData();
     showMenu();
-
-
 }
 
 main();
