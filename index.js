@@ -128,6 +128,12 @@ function eraseContact() {
     showAllContacts();
 }
 
+function saveAndExit() {
+    var content = JSON.stringify(contacts);
+    // console.log(content);
+    fs.writeFileSync('./data.json', content, { encoding: 'utf-8' });
+}
+
 
 function showMenu() {
     console.log('==================================================');
