@@ -61,7 +61,7 @@ function editContact() {
 }
 
 function searchContact() {
-    var valSearch = readlineSync.question('> Enter name or phone: ' );
+    var valSearch = readlineSync.question('> Enter name or phone: ');
     search(contacts, valSearch);
     showMenu();
 }
@@ -114,6 +114,18 @@ function showContacts(ob) {
     for (x of ob) {
         console.log("id: " + x.id + " || name: " + x.name + " || phone: " + x.phone);
     }
+}
+
+function eraseContact() {
+    var idEarse = readlineSync.question('> Enter ID need earse: ');
+
+    contacts.splice(idEarse, 1);
+
+    //Reorder id value after deletion.
+    for (idEarse; idEarse < contacts.length; idEarse++) {
+        contacts[idEarse].id = idEarse;
+    }
+    showAllContacts();
 }
 
 
